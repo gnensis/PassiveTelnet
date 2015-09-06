@@ -93,7 +93,7 @@ int transfer(int fromfd, int tofd) {
 			return -1;
 		}
 	}
-	printf("errno:%d\n", errno);
+//	printf("errno:%d\n", errno);
 	if (readSize < 0 && errno != EAGAIN) {
 		return -1;
 	}
@@ -207,7 +207,7 @@ void *spawnNewConnect(void *arg) {
 						socket_server > socket_client ?
 								socket_server : socket_client;
 				ret = select(n_select + 1, &n_read_fds, NULL, NULL, NULL);
-				perror("SELECT END\n");
+	//			perror("SELECT END\n");
 				if (ret < 0) {
 					perror("Select() error. \n");
 					break;
@@ -217,7 +217,7 @@ void *spawnNewConnect(void *arg) {
 					break;
 				}
 				if (FD_ISSET(socket_server, &n_read_fds)) {
-					perror("FD_ISSET(socket_server, &n_read_fds)");
+	//				perror("FD_ISSET(socket_server, &n_read_fds)");
 					ret = transfer(socket_server, socket_client);
 					if (ret <= 0) {
 						printf(
@@ -228,7 +228,7 @@ void *spawnNewConnect(void *arg) {
 
 				}
 				if (FD_ISSET(socket_client, &n_read_fds)) {
-					perror("FD_ISSET(socket_client, &n_read_fds)");
+	//				perror("FD_ISSET(socket_client, &n_read_fds)");
 					ret = transfer(socket_client, socket_server);
 					if (ret <= 0) {
 						printf(

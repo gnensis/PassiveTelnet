@@ -1586,7 +1586,7 @@ int tn(int argc, const char *argv[]) {
 			continue;
 		connected++;
 	} while (connected == 0);
-    cmdrc(hostp, hostname);
+    	//cmdrc(hostp, hostname);
 
 	dostatus(1);
 	if (sigsetjmp(peerdied, 1) == 0){

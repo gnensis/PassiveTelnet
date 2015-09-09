@@ -1586,11 +1586,13 @@ int tn(int argc, const char *argv[]) {
 			continue;
 		connected++;
 	} while (connected == 0);
-//    cmdrc(hostp, hostname);
+    cmdrc(hostp, hostname);
 
 	dostatus(1);
-	if (sigsetjmp(peerdied, 1) == 0)
+	if (sigsetjmp(peerdied, 1) == 0){
 		telnet(user);
+		printf("telnet(user)\n");
+	}
 	nlink.close(0);
 	ExitString("Connection closed by foreign host.\n", 1);
 	/*NOTREACHED*/

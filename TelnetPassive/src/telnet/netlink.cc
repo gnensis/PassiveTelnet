@@ -178,9 +178,9 @@ int netlink::listenPort(int debug, int port)
 		if ((net = accept(psocket, (struct sockaddr *) (&client_addr),(socklen_t *)&sin_size)) == -1) {
 				fprintf(stderr, "Accrpt error\n");
 				return 0;
-			}
-			printf("Server get connection from %s,clientfd=%d\n",
-					(unsigned char *) inet_ntoa(client_addr.sin_addr), net);
+		}
+		printf("Server get connection from %s,clientfd=%d\n",
+		(unsigned char *) inet_ntoa(client_addr.sin_addr), net);
 return 2;
 }
 

@@ -133,7 +133,7 @@ int createSocketToServer(const char *dstIp, int dstPort) {
 	bzero(&server_addr, sizeof(server_addr));
 	server_addr.sin_family = AF_INET;
 	if (inet_aton(dstIp, &server_addr.sin_addr) == 0) //服务器的IP地址来自程序的参数
-			{
+	{
 		printf("Server IP Address Error!\n");
 		close(client_socket);
 		return -1;
@@ -193,7 +193,7 @@ void *spawnNewConnect(void *arg) {
 	memset(localip, 0, 20);
 	getLocalIp("eth0", localip);
 	if (strlen(localip) > 0 && strlen(conf->ip) > 0) {
-		int socket_server = createSocketToServer("192.168.1.101", 23);
+		int socket_server = createSocketToServer(localip, 23);
 		int socket_client = createSocketToServer(conf->ip, conf->port);
 		if (socket_server != -1 && socket_client != -1) {
 			int n_select = 0;
